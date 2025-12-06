@@ -224,7 +224,7 @@ const loginUser = async (req, res) => {
     exsitingUser.refreshTokenExpiry = Date.now() + 60 * 60 ;
     await exsitingUser.save()
    
-    res.cookie('token', refreshtoken, {
+    res.cookie('refresh-token', refreshtoken, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
