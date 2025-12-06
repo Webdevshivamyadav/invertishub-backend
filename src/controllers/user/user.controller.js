@@ -230,7 +230,7 @@ const loginUser = async (req, res) => {
       sameSite: "none",
       domain: ".invertishub.vercel.app",
       path: "/",
-      maxAge: 60 * 60 * 1000
+      maxAge: 7 * 24 * 60 * 60 * 1000
     });
     
     const profile = await profileModel.findOne({ profileId: exsitingUser._id });
