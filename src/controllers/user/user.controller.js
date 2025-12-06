@@ -224,13 +224,13 @@ const loginUser = async (req, res) => {
     exsitingUser.refreshTokenExpiry = Date.now() + 60 * 60 ;
     await exsitingUser.save()
    
-      res.cookie("refresh-token", refreshtoken, {
+    res.cookie("refresh-token", refreshtoken, {
       httpOnly: true,
       secure: true,
       sameSite: "none",
+      domain: ".invertishub.vercel.app",
       path: "/",
-      maxAge: 60 * 60 * 1000,
-      domain: "invertishub.vercel.app" 
+      maxAge: 60 * 60 * 1000
     });
     
     const profile = await profileModel.findOne({ profileId: exsitingUser._id });
