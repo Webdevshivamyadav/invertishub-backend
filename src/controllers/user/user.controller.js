@@ -461,7 +461,7 @@ const updateProfile = async (req, res) => {
 }
 
 const logout = (req, res) => {
-  res.clearCookie('token', {
+  res.clearCookie('refresh-token', {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production', // only secure in production
     sameSite: 'strict'
