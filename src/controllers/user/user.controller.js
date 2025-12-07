@@ -226,9 +226,9 @@ const loginUser = async (req, res) => {
    
     res.cookie("refresh-token", refreshtoken, {
       httpOnly: true,
+      domain: process.env.FRONTEND_URL,
       secure: true,
       sameSite: "none",
-      
       path: "/",
       maxAge: 7 * 24 * 60 * 60 * 1000
     });
