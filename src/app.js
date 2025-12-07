@@ -17,11 +17,11 @@ const cors = require('cors')
 
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL , // your Next.js app origin
+    origin: "https://invertishub.vercel.app/" , // your Next.js app origin
     credentials: true // allow cookies / authorization headers
   })
 )
-console.log(process.env.FRONTEND_URL)
+
 app.use(express.json())
 app.use(cookie())
 app.use(helmet())

@@ -224,12 +224,14 @@ const loginUser = async (req, res) => {
     exsitingUser.refreshTokenExpiry = Date.now() + 60 * 60 ;
     await exsitingUser.save()
    
-    res.cookie("refresh-token", refreshtoken, {
+     res.cookie("refresh-token", refreshtoken, {
       httpOnly: true,
       secure: true,
       sameSite: "none",
+      maxAge: 7 * 24 * 60 * 60 * 1000,
       path: "/",
-      maxAge: 7 * 24 * 60 * 60 * 1000
+      // Domain को आपके फ्रंटएंड सब-डोमेन पर सेट करें
+      domain: "invertishub.vercel.app", 
     });
     
     const profile = await profileModel.findOne({ profileId: exsitingUser._id });
@@ -465,7 +467,7 @@ const logout = (req, res) => {
   res.clearCookie('refresh-token', {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production', // only secure in production
-    sameSite: 'strict'
+    sameSite: 'Strict'
   })
 
   res.status(200).json({ message: 'Logged out successfully' })
