@@ -226,7 +226,7 @@ const loginUser = async (req, res) => {
    
     res.cookie("refresh-token", refreshtoken, {
       httpOnly: true,
-      domain: process.env.FRONTEND_URL,
+      domain: "invertishub.vercel.app",
       secure: true,
       sameSite: "none",
       path: "/",
