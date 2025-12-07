@@ -224,14 +224,13 @@ const loginUser = async (req, res) => {
     exsitingUser.refreshTokenExpiry = Date.now() + 60 * 60 ;
     await exsitingUser.save()
    
-     res.cookie("refresh-token", refreshtoken, {
+      res.cookie("refresh-token", refreshtoken, {
       httpOnly: true,
       secure: true,
-      sameSite: "none",
+      sameSite: "none", 
       maxAge: 7 * 24 * 60 * 60 * 1000,
       path: "/",
-      // Domain को आपके फ्रंटएंड सब-डोमेन पर सेट करें
-      domain: "invertishub.vercel.app", 
+     
     });
     
     const profile = await profileModel.findOne({ profileId: exsitingUser._id });
