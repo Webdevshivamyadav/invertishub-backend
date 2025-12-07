@@ -17,7 +17,7 @@ const cors = require('cors')
 
 app.use(
   cors({
-    origin: "https://invertishub.vercel.app/" , // your Next.js app origin
+    origin: "https://invertishub.vercel.app" , // your Next.js app origin
     credentials: true // allow cookies / authorization headers
   })
 )
