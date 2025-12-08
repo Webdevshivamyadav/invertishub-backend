@@ -224,15 +224,20 @@ const loginUser = async (req, res) => {
     exsitingUser.refreshTokenExpiry = Date.now() + 60 * 60 ;
     await exsitingUser.save()
    
-      res.cookie("refresh-token", refreshtoken, {
-      httpOnly: true,
-      secure: true,
-      sameSite: "none", 
-      maxAge: 7 * 24 * 60 * 60 * 1000,
-      path: "/",
+    //   res.cookie("refresh-token", refreshtoken, {
+    //   httpOnly: true,
+    //   secure: true,
+    //   sameSite: "none", 
+    //   maxAge: 7 * 24 * 60 * 60 * 1000,
+    //   path: "/",
      
-    });
-    
+    // });
+    // Source - https://stackoverflow.com/a
+// Posted by Ryne
+// Retrieved 2025-12-08, License - CC BY-SA 4.0
+
+  res.status(200).cookie('token', refreshtoken, { httpOnly: true, domain: process.env.NODE_ENV === 'development' ? '.localhost' : '.invertishub.vercel.app', sameSite: 'none', secure: true, maxAge: 7 * 24 * 60 * 60 * 1000, path: '/' })
+
     const profile = await profileModel.findOne({ profileId: exsitingUser._id });
     const profileImage = await getMediaById(profile.profileImageId);
     if(profileImage){
