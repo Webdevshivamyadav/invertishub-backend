@@ -241,7 +241,7 @@ const loginUser = async (req, res) => {
       httpOnly: true, 
       sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'none',
       secure: process.env.NODE_ENV === 'production',
-      domain: process.env.NODE_ENV === 'development' ? '.localhost' : '.invertishub.vercel.app', 
+      domain: process.env.NODE_ENV === 'development' ? '.localhost' : 'invertishub.vercel.app', 
       maxAge: 7 * 24 * 60 * 60 * 1000,
       path: '/' 
   
