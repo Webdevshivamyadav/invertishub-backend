@@ -2,13 +2,13 @@ const express = require('express')
 const app = express()
 const cookie = require('cookie-parser')
 
-const userRouter = require('./routes/user/user.route');
-const postRouter = require('./routes/user/post.routes');
-const questionRouter = require('./routes/user/question.route');
-const followUnfollowRouter = require('./routes/user/followUnfollow.route');
-const likeRouter = require('./routes/user/likeDisLike.route');
-const commentRouter = require('./routes/user/comment.route');
-const savedItemRouter = require('./routes/user/savedItem.route');
+const userRouter = require('./routes/user/user.route')
+const postRouter = require('./routes/user/post.routes')
+const questionRouter = require('./routes/user/question.route')
+const followUnfollowRouter = require('./routes/user/followUnfollow.route')
+const likeRouter = require('./routes/user/likeDisLike.route')
+const commentRouter = require('./routes/user/comment.route')
+const savedItemRouter = require('./routes/user/savedItem.route')
 const cloudRouter = require('./routes/user/cloudinary.route')
 const reportRouter = require('./routes/user/report.route')
 
@@ -17,7 +17,7 @@ const cors = require('cors')
 
 app.use(
   cors({
-    origin: "https://invertishub.vercel.app" , // your Next.js app origin
+    origin: process.env.FRONTEND_URL, // your Next.js app origin
     credentials: true // allow cookies / authorization headers
   })
 )
