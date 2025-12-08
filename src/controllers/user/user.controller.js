@@ -236,7 +236,17 @@ const loginUser = async (req, res) => {
 // Posted by Ryne
 // Retrieved 2025-12-08, License - CC BY-SA 4.0
 
-  res.status(200).cookie('token', refreshtoken, { httpOnly: true, domain: process.env.NODE_ENV === 'development' ? '.localhost' : '.invertishub.vercel.app', maxAge: 7 * 24 * 60 * 60 * 1000, path: '/' })
+  res.status(200).cookie('refersh-token', refreshtoken, 
+    { 
+      httpOnly: true, 
+      sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'none',
+      secure: process.env.NODE_ENV === 'production',
+      domain: process.env.NODE_ENV === 'development' ? '.localhost' : '.invertishub.vercel.app', 
+      maxAge: 7 * 24 * 60 * 60 * 1000,
+      path: '/' 
+  
+    }
+    )
 
     const profile = await profileModel.findOne({ profileId: exsitingUser._id });
     const profileImage = await getMediaById(profile.profileImageId);
